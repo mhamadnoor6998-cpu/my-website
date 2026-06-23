@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى حبيبتي وروحي</title>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #fff0f3;
+            --text-color: #4a1525;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* تأثير القلوب المتحركة في الخلفية */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: var(--primary-color);
+            opacity: 0.3;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            z-index: 1;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .romantic-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            white-space: pre-line;
+            text-align: justify;
+        }
+
+        .counter-box {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px dashed var(--primary-color);
+        }
+
+        .counter-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .days-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .music-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .music-btn:hover {
+            background-color: #ff758f;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7a223a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="container">
+        <h1>حبيبتي تغريد 💖</h1>
+        
+        <p class="romantic-text">
+        أميرتي وروحي ونور عيوني، بهاد اليوم بدي قلك إني واقف جنبك، ومارح اتركك لو شو ما صار بهالدنيا. نحنا سوا ورح نضل سوا، ورح نواجه كلشي بهالحياة وإيدنا بإيد بعض. أنا عم أسس حياتي وعم اتعب كرمال دنيتنا الجاية، وإن شاء الله يا رب الله بيجمعني فيكي بالحلال وتصيري شريكة عمري وبيتينا فخور فيكي فوق ما تتصوري، فخور بأصلك، بأخلاقك، وبصبرك. شكراً لأنك واقفة معي، وشكراً على ثقتك فيني يلي بتسوى الدنيا كلها. ريحيلي قلبك واطمني، أنا سندك وأمانك ومارح اتركك طول العمر.
+        </p>
+
+        <!-- عداد الأيام (يمكنك تعديل التاريخ بالأسفل) -->
+        <div class="counter-box">
+            <div class="counter-title">صرلنا معترفين لبعض:</div>
+            <div class="days-number" id="daysCount">0</div>
+            <div>يوم من الحب والأمل ✨</div>
+        </div>
+
+        <!-- زر لتشغيل موسيقى هادئة إذا رغبت -->
+        <button class="music-btn" onclick="showLoveMessage()">اكبسي يا حية  </button>
+        
+        <!-- فيك تبدل هاد الرابط برابط غنية على ذوقك بصيغة mp3 -->
+        <audio id="bgMusic" loop src="https://soundhelix.com"></audio>
+
+        <div class="footer">وعد قطعتو على حالي.. مارح اتركك لآخر العمر 💍</div>
+    </div>
+
+    <script>
+function showLoveMessage() {
+    alert("\u0623\u0646\u0627 \u0628\u062d\u0628\u0643 \u064a\u0627 \u0645\u062c\u0646\u0644\u0648\u0646\u0629 \u2764\ufe0f");
+}
+
+    </script>
+
+    <script>
+        // كود حساب الأيام - حط تاريخ بداية معرفتكن أو حبكن هون (السنة، الشهر ناقص 1، اليوم)
+        // مثال: 1 يناير 2024 نكتبها (2024, 0, 1) لأن الأشهر تبدأ من 0
+        const startDate = new Date(2026, 3, 17); 
+        
+        function updateCounter() {
+            const today = new Date();
+            const difference = today - startDate;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCount').innerText = days;
+        }
+        updateCounter();
+
+        // كود تشغيل وإيقاف الموسيقى
+        const music = document.getElementById('bgMusic');
+        function togglePlay() {
+            return music.paused ? music.play() : music.pause();
+        }
+
+        // كود توليد القلوب المتطايرة في الخلفية
+        const container = document.getElementById('heartsContainer');
+        const heartSymbols = ['❤️', '💖', '💝', '💕'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        setInterval(createHeart, 300);
+    </script>
+   
+</body>
+</html>
